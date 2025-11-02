@@ -6,13 +6,18 @@ Pipeline {
     }
     stages {
         stage('Checkout Code') {
-            checkout scm
+            steps {
+                checkout scm
+            }
 
         }
         stage('Extract Data') {
-            bat "${env.PYTHON} extract.py"
+            steps {
+                bat "${env.PYTHON} extract.py"
 
+            }
         }
+            
     }
     Post {
         success {
