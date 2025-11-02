@@ -1,18 +1,35 @@
-node {
-    try {
+pipeline {
+    agent any
+    environment {
+       PYTHON = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+    }
+    triggers {
+        cron("*/2 * * * *")
+    }
+    stages {
         stage('Checkout Code') {
-            checkout scm
+            steps {
+                checkout scm
+            }
 
         }
         stage('Extract Data') {
-            bat "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe extract_data.py"
+            steps {
+                bat "${env.PYTHON} extract_data.py"
 
+            }
         }
+            
     }
-    catch(err) {
-        echo "Pipeline Error : ${err}"
-    }
-    finally {
-        echo "Pipeline completed"
+    post {
+        success {
+            echo "success ..."
+        }
+        failure {
+            echo "failure ..."
+        }
+        always {
+            echo "Always ..."
+        }
     }
 }
