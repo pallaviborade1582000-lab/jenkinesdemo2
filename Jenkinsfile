@@ -12,7 +12,7 @@ node {
     catch(err) {
         echo "Pipeline Error : ${err}"
     }
-    fially {
+    finally {
         echo "Pipeline completed"
     }
 }
