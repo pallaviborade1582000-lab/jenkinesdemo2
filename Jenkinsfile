@@ -2,7 +2,6 @@ Pipeline {
     agent any
     environment {
        PYTHON = "C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
- 
     }
     stages {
         stage('Checkout Code') {
@@ -21,16 +20,13 @@ Pipeline {
     }
     Post {
         success {
-            echo "success..."
-
+            echo "success ..."
         }
         failure {
-            echo "failure..."
-
+            echo "failure ..."
         }
         always {
-            echo "Always..."
-
+            echo "Always ..."
         }
     }
 }
